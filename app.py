@@ -16,7 +16,7 @@ kw_model = KeyBERT(model='all-mpnet-base-v2')
 
 @app.post("/keywords")
 def update_item(doc: Doc):
-    full_text = doc.title +", "+ doc.text 
+    full_text = f"{doc.title}, {doc.text}"
     # kw_model = KeyBERT(model='all-mpnet-base-v2')
     keywords = kw_model.extract_keywords(full_text, 
                                      keyphrase_ngram_range=(1, doc.length), 
